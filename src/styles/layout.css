@@ -1,0 +1,27 @@
+
+.layout {
+  @apply flex flex-col min-h-screen bg-[var(--color-bg)] text-[var(--color-text)];
+}
+
+.header {
+  @apply w-full py-4 px-6 bg-[var(--color-card)] shadow-sm flex items-center justify-between sticky top-0 z-50;
+}
+
+.main {
+  @apply flex-1 container mx-auto px-4 py-6;
+}
+
+.footer {
+  @apply mt-auto py-6 text-center text-sm border-t border-[var(--color-border)] bg-[var(--color-card)];
+}
+
+
+.grid-dashboard {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+@media (max-width: 640px) {
+  .header {
+    @apply flex-col space-y-2;
+  }
+}

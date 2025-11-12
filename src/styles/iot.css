@@ -1,0 +1,45 @@
+
+.iot-panel {
+  @apply bg-[var(--color-card)] rounded-2xl shadow-md p-6 border border-[var(--color-border)];
+}
+
+.sensor-card {
+  @apply flex flex-col items-center justify-center text-center p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)];
+}
+
+.sensor-card.active {
+  @apply border-[var(--color-secondary)] shadow-inner;
+}
+
+.sensor-indicator {
+  @apply w-3 h-3 rounded-full;
+}
+
+.sensor-indicator.online {
+  @apply bg-green-500 animate-pulse;
+}
+
+.sensor-indicator.offline {
+  @apply bg-gray-400;
+}
+
+.qr-container {
+  @apply flex flex-col items-center gap-3 p-4;
+}
+
+.qr-code {
+  @apply border border-[var(--color-border)] rounded-xl shadow-md p-2 bg-white;
+}
+
+.qr-status {
+  @apply text-xs text-gray-500 italic;
+}
+
+@keyframes wifiPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.wifi-signal {
+  animation: wifiPulse 1.5s ease-in-out infinite;
+}
