@@ -170,9 +170,9 @@ export default function IoTPanel() {
                 {getIcon(s.type)}
                 <div>
                   <div className="font-medium text-base">{s.name}</div>
-                  <div className="text-sm text-slate-600">
+                  {/* <div className="text-sm text-slate-600">
                     Valor: {s.value} {s.unit ?? ""}
-                  </div>
+                  </div> */}
                   <div
                     className={`text-sm font-medium ${
                       s.enabled ? "text-green-600" : "text-red-600"
