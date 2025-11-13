@@ -182,7 +182,7 @@ export default function IoTPanel() {
                   </div>
                 </div>
               </div>
-              <button
+              {/* <button
                 onClick={() => toggleSensor(s.id)}
                 disabled={loadingId === s.id}
                 className={`px-4 py-2 rounded text-sm font-medium shadow-sm transition-all duration-200 ${
@@ -192,7 +192,7 @@ export default function IoTPanel() {
                 }`}
               >
                 {loadingId === s.id ? "..." : s.enabled ? "Apagar" : "Encender"}
-              </button>
+              </button> */}
             </li>
           ))}
         </ul>
