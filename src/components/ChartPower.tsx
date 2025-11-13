@@ -25,11 +25,8 @@ export default function ChartPower({ data }: ChartPowerProps) {
   }
 
   return (
-    <div className="bg-white p-4 rounded-md shadow-md">
-      <h3 className="text-lg font-semibold mb-3 text-blue-600">
-        Gráfica de Potencia Eléctrica
-      </h3>
-      <ResponsiveContainer width="100%" height={300}>
+    <div className="w-full h-full overflow-hidden">
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
@@ -48,13 +45,7 @@ export default function ChartPower({ data }: ChartPowerProps) {
             }}
           />
           <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="y"
-            stroke="#2563eb"
-            strokeWidth={2}
-            dot={true}
-          />
+          <Line type="monotone" dataKey="y" stroke="#2563eb" strokeWidth={2} dot />
         </LineChart>
       </ResponsiveContainer>
     </div>

@@ -1,0 +1,43 @@
+[
+  {
+    "id": "sim-1763013681319",
+    "windSpeed": 233,
+    "bladeLength": 123,
+    "power": 23,
+    "timestamp": "2025-11-13T06:01:21.319Z"
+  },
+  {
+    "id": "sim-1763013691131",
+    "windSpeed": 236,
+    "bladeLength": 123,
+    "power": 78,
+    "timestamp": "2025-11-13T06:01:31.131Z"
+  },
+  {
+    "id": "f71f0c66-4267-4f70-ba1b-fe4da303290a",
+    "name": "Simulación 1:32:48 a. m.",
+    "radius": 2.3,
+    "windSpeed": 5.2,
+    "pg": 1437.1122502172996,
+    "pUseful": 574.8449000869199,
+    "pElectric": 183.95036802781436
+  },
+  {
+    "id": "e2c6f33f-f8e8-44f4-a109-e105b5f88693",
+    "name": "Simulación 1:33:03 a. m.",
+    "radius": 3.6,
+    "windSpeed": 362,
+    "pg": 120714823346.12047,
+    "pUseful": 48285929338.44819,
+    "pElectric": 15451497388.303421
+  },
+  {
+    "id": "4302031c-97d9-4f09-9bc8-fdafc291cb42",
+    "name": "Simulación 1:33:21 a. m.",
+    "radius": 839,
+    "windSpeed": 15.2,
+    "pg": 54840514633.42126,
+    "pUseful": 21936205853.368504,
+    "pElectric": 4387241170.673701
+  }
+]
