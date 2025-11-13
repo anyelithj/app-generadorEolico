@@ -17,7 +17,6 @@ export default function ResultsPage() {
 
       
         <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
-          {/* 📈 Gráfica */}
           <div className="w-full overflow-hidden rounded-md bg-white p-3 shadow-sm">
             <p className="mb-4 text-slate-700 text-justify">
               Se comparan los resultados de las simulaciones y se visualiza cómo varía 
