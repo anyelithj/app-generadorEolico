@@ -19,19 +19,32 @@ export default function IoTPanel() {
 
   const fetchSensors = async () => {
     try {
-      const resp = await fetch("http://localhost:4000/latest");
+      const resp = await fetch("https://proyectofisicaarquimedes-production.up.railway.app/latest");
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const data = await resp.json();
 
-      const sensorsList: Sensor[] = data.data
+      const data = await resp.json();
+      console.log("RAW DATA:", data);
+
+      // Aseguramos que siempre trabajamos con un array
+      const items = Array.isArray(data) ? data : [data];
+
+      const sensorsList: Sensor[] = items
         .map((obj: any) => {
-          if (obj.Esp32_1) {
+          console.log("OBJ:", obj);
+
+          // 🔹 Caso 1: multi con distance / temperature / humidity
+          if (
+            obj.type === "multi" &&
+            (obj.distance !== undefined ||
+              obj.temperature !== undefined ||
+              obj.humidity !== undefined)
+          ) {
             return [
               {
                 id: "distance",
                 name: "Distancia",
                 value: obj.distance,
-                unit: obj.unit,
+                unit: obj.unit ?? "cm",
                 enabled: true,
                 type: "distance",
               },
@@ -52,8 +65,11 @@ export default function IoTPanel() {
                 type: "humidity",
               },
             ];
-          } else if (obj.Esp32_2) {
-            return [
+          }
+
+          // 🔹 Caso 2: multi con Esp32_2: true (flame / rpm / windSpeed)
+          if (obj.type === "multi" && obj.Esp32_2) {
+            const arr: Sensor[] = [
               {
                 id: "flame",
                 name: "Sensor de Llama",
@@ -68,16 +84,23 @@ export default function IoTPanel() {
                 enabled: true,
                 type: "rpm",
               },
-              {
+            ];
+
+            if (obj.windSpeed !== undefined) {
+              arr.push({
                 id: "wind",
                 name: "Velocidad del Viento",
                 value: obj.windSpeed,
                 unit: "m/s",
                 enabled: true,
                 type: "wind",
-              },
-            ];
-          } else return [];
+              });
+            }
+
+            return arr;
+          }
+
+          return [];
         })
         .flat();
 
@@ -97,7 +120,6 @@ export default function IoTPanel() {
     return () => clearInterval(interval);
   }, []);
 
-
   const toggleSensor = async (sensorId: string) => {
     setLoadingId(sensorId);
     setSensors((prev) =>
@@ -108,7 +130,6 @@ export default function IoTPanel() {
     await new Promise((r) => setTimeout(r, 400)); // simular latencia
     setLoadingId(null);
   };
-
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -132,7 +153,7 @@ export default function IoTPanel() {
   return (
     <div className="bg-white p-6 rounded-md shadow-sm min-h-[420px] md:min-h-[380px]">
       <h3 className="text-xl font-bold mb-7 flex items-center gap-2">
-         Estado de Sensores
+        Estado de Sensores
       </h3>
 
       {loading ? (
@@ -171,11 +192,7 @@ export default function IoTPanel() {
                     : "bg-gray-300 hover:bg-gray-400 text-gray-700"
                 }`}
               >
-                {loadingId === s.id
-                  ? "..."
-                  : s.enabled
-                  ? "Apagar"
-                  : "Encender"}
+                {loadingId === s.id ? "..." : s.enabled ? "Apagar" : "Encender"}
               </button>
             </li>
           ))}
