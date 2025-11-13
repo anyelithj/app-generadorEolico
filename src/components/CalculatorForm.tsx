@@ -9,24 +9,33 @@ import Swal from "sweetalert2";
 export default function CalculatorForm() {
   const dispatch = useAppDispatch();
   const { computePreview } = useWindCalculator();
+
+
   const [radius, setRadius] = useState<number | "">("");
   const [windSpeed, setWindSpeed] = useState<number | "">("");
   const [density, setDensity] = useState<number | "">("");
   const [efficiency, setEfficiency] = useState<number | "">("");
   const [saving, setSaving] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!radius || !windSpeed || !density || !efficiency) {
-      Swal.fire("Campos incompletos", "Por favor completa todos los campos.", "warning");
+    if (radius === "" || windSpeed === "" || density === "" || efficiency === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Campos incompletos",
+        text: "Por favor, completa todos los campos antes de calcular.",
+      });
       return;
     }
+
 
     dispatch(setInputs({ radius, windSpeed, density, efficiency }));
     dispatch(calculateResults());
 
+   
     const results = computePreview({ radius, windSpeed, density, efficiency });
 
+   
     const newSimulation = {
       id: crypto.randomUUID(),
       name: `Simulación ${new Date().toLocaleTimeString()}`,
@@ -37,35 +46,31 @@ export default function CalculatorForm() {
       pElectric: results.pElectric,
     };
 
-    try {
-      setSaving(true);
-      const res = await fetch("/api/simulations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newSimulation),
-      });
+    
+    setSaving(true);
+    const stored = localStorage.getItem("simulations");
+    const simulations = stored ? JSON.parse(stored) : [];
+    simulations.push(newSimulation);
+    localStorage.setItem("simulations", JSON.stringify(simulations));
+    setSaving(false);
 
-      if (!res.ok) throw new Error("Error al guardar en servidor");
+    Swal.fire({
+      icon: "success",
+      title: "Simulación guardada",
+      text: "La simulación se ha agregado correctamente.",
+      timer: 1500,
+      showConfirmButton: false,
+    });
 
-      Swal.fire({
-        icon: "success",
-        title: "Simulación guardada",
-        timer: 1200,
-        showConfirmButton: false,
-      });
-      setRadius("");
-      setWindSpeed("");
-      setDensity("");
-      setEfficiency("");
 
-      // 🔄 refresca tabla y gráfica
-      window.dispatchEvent(new Event("simulationsUpdated"));
-    } catch {
-      Swal.fire("Error", "No se pudo guardar la simulación", "error");
-    } finally {
-      setSaving(false);
-    }
+    setRadius("");
+    setWindSpeed("");
+    setDensity("");
+    setEfficiency("");
+
+    window.dispatchEvent(new Event("simulationsUpdated"));
   };
+
 
   const preview =
     radius && windSpeed && density && efficiency
@@ -73,9 +78,13 @@ export default function CalculatorForm() {
       : { pg: 0, pUseful: 0, pElectric: 0 };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-md shadow-sm space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-6 rounded-md shadow-sm space-y-4"
+    >
       <h2 className="text-2xl font-semibold mb-4">Calcula la Potencia del Viento</h2>
-      {/* Inputs */}
+
+ 
       <div className="grid gap-4">
         <label className="block">
           Radio (m)
@@ -84,7 +93,9 @@ export default function CalculatorForm() {
             value={radius}
             placeholder="Ej: 2.5"
             step="0.1"
-            onChange={(e) => setRadius(e.target.value ? parseFloat(e.target.value) : "")}
+            onChange={(e) =>
+              setRadius(e.target.value ? parseFloat(e.target.value) : "")
+            }
             className="w-full border rounded px-3 py-2 mt-1"
           />
         </label>
@@ -96,7 +107,9 @@ export default function CalculatorForm() {
             value={windSpeed}
             placeholder="Ej: 5.0"
             step="0.1"
-            onChange={(e) => setWindSpeed(e.target.value ? parseFloat(e.target.value) : "")}
+            onChange={(e) =>
+              setWindSpeed(e.target.value ? parseFloat(e.target.value) : "")
+            }
             className="w-full border rounded px-3 py-2 mt-1"
           />
         </label>
@@ -108,7 +121,9 @@ export default function CalculatorForm() {
             value={density}
             placeholder="Ej: 1.225"
             step="0.001"
-            onChange={(e) => setDensity(e.target.value ? parseFloat(e.target.value) : "")}
+            onChange={(e) =>
+              setDensity(e.target.value ? parseFloat(e.target.value) : "")
+            }
             className="w-full border rounded px-3 py-2 mt-1"
           />
         </label>
@@ -122,7 +137,9 @@ export default function CalculatorForm() {
             step="0.01"
             min="0"
             max="1"
-            onChange={(e) => setEfficiency(e.target.value ? parseFloat(e.target.value) : "")}
+            onChange={(e) =>
+              setEfficiency(e.target.value ? parseFloat(e.target.value) : "")
+            }
             className="w-full border rounded px-3 py-2 mt-1"
           />
         </label>
@@ -131,13 +148,15 @@ export default function CalculatorForm() {
       <div className="flex items-center justify-between mt-6">
         <button
           type="submit"
-          disabled={saving}
           className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition"
+          disabled={saving}
         >
           {saving ? "Guardando..." : "Calcular"}
         </button>
+
         <div className="text-sm text-slate-600">
-          Potencia eléctrica estimada: <strong>{preview.pElectric.toFixed(2)} W</strong>
+          Potencia eléctrica estimada:{" "}
+          <strong>{preview.pElectric.toFixed(2)} W</strong>
         </div>
       </div>
     </form>

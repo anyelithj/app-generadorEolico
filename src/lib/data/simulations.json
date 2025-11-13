@@ -39,5 +39,149 @@
     "pg": 54840514633.42126,
     "pUseful": 21936205853.368504,
     "pElectric": 4387241170.673701
+  },
+  {
+    "id": "df7fbba8-e24d-450c-a05d-67faba238649",
+    "name": "Simulación 2:00:12 a. m.",
+    "radius": 2.4,
+    "windSpeed": 6.3,
+    "pg": 2796.2917383158738,
+    "pUseful": 1118.5166953263495,
+    "pElectric": 335.5550085979048
+  },
+  {
+    "id": "fe9ea7d3-7480-43a5-a3f5-0c6efd33d7cd",
+    "name": "Simulación 2:03:47 a. m.",
+    "radius": 80.9,
+    "windSpeed": 5.2,
+    "pg": 6114589.673634566,
+    "pUseful": 2445835.8694538265,
+    "pElectric": 489167.1738907653
+  },
+  {
+    "id": "8de9285d-7198-4e5c-ab1c-688fbdba27bf",
+    "name": "Simulación 2:06:02 a. m.",
+    "radius": 23.33,
+    "windSpeed": 5.3,
+    "pg": 156560.45501799192,
+    "pUseful": 62624.18200719677,
+    "pElectric": 12524.836401439354
+  },
+  {
+    "id": "1f6eb63b-fcf6-43e2-b689-711521ec72c0",
+    "name": "Simulación 2:06:17 a. m.",
+    "radius": 23.36,
+    "windSpeed": 2.36,
+    "pg": 247870.15802191375,
+    "pUseful": 99148.06320876551,
+    "pElectric": 9914.806320876552
+  },
+  {
+    "id": "747acaaf-309b-4f60-8bf3-c19d922693dd",
+    "name": "Simulación 2:07:12 a. m.",
+    "radius": 23,
+    "windSpeed": 5.3,
+    "pg": 15216272.22317371,
+    "pUseful": 6086508.889269484,
+    "pElectric": 1217301.7778538968
+  },
+  {
+    "id": "97f9a944-a3c9-468b-b32f-b92f6f4b508b",
+    "name": "Simulación 2:07:27 a. m.",
+    "radius": 362,
+    "windSpeed": 5.3,
+    "pg": 37693784.06830956,
+    "pUseful": 15077513.627323825,
+    "pElectric": 4523254.0881971475
+  },
+  {
+    "id": "47b4cab6-5fe4-4e2f-bb1e-1f1c92ce7d08",
+    "name": "Simulación 2:10:40 a. m.",
+    "radius": 2.03,
+    "windSpeed": 5.3,
+    "pg": 1185.3447297632613,
+    "pUseful": 474.1378919053045,
+    "pElectric": 165.94826216685658
+  },
+  {
+    "id": "11493c62-1f29-4029-bba0-1d2d7b23b1b6",
+    "name": "Simulación 2:10:54 a. m.",
+    "radius": 6.3,
+    "windSpeed": 52,
+    "pg": 10813975.157367535,
+    "pUseful": 4325590.062947014,
+    "pElectric": 1297677.0188841042
+  },
+  {
+    "id": "8710594f-4a8d-4105-a1d5-0f4f5bf64fb0",
+    "name": "Simulación 2:16:47 a. m.",
+    "radius": 2.3,
+    "windSpeed": 5.3,
+    "pg": 1682.4496116679873,
+    "pUseful": 672.9798446671949,
+    "pElectric": 242.27274408019017
+  },
+  {
+    "id": "f89f9173-b7b5-4af3-9daf-ab2c5777b9c5",
+    "name": "Simulación 2:17:00 a. m.",
+    "radius": 2.3,
+    "windSpeed": 5.6,
+    "pg": 1989.0032186887197,
+    "pUseful": 795.6012874754879,
+    "pElectric": 286.41646349117565
+  },
+  {
+    "id": "f043511b-1bb2-4d05-bfa4-4f9770369359",
+    "name": "Simulación 2:20:43 a. m.",
+    "radius": 120,
+    "windSpeed": 5.6,
+    "pg": 489511499.51413167,
+    "pUseful": 195804599.80565268,
+    "pElectric": 45035057.955300115
+  },
+  {
+    "id": "b49ea77c-f058-43b4-9b17-995026588d75",
+    "name": "Simulación 2:20:55 a. m.",
+    "radius": 0.33,
+    "windSpeed": 52.3,
+    "pg": 25205.194209902806,
+    "pUseful": 10082.077683961123,
+    "pElectric": 3024.623305188337
+  },
+  {
+    "id": "03e66e36-e018-4451-ba42-bb5089663eac",
+    "name": "Simulación 2:24:10 a. m.",
+    "radius": 110,
+    "windSpeed": 120,
+    "pg": 43451905832.46272,
+    "pUseful": 17380762332.98509,
+    "pElectric": 13904609866.388071
+  },
+  {
+    "id": "b352b2fb-dba2-4ceb-8765-1cf71c6edf75",
+    "name": "Simulación 2:24:48 a. m.",
+    "radius": 250,
+    "windSpeed": 53.2,
+    "pg": 18595824223.261044,
+    "pUseful": 7438329689.304418,
+    "pElectric": 4462997813.58265
+  },
+  {
+    "id": "6665117e-6a64-441f-99a6-e386a1588ac0",
+    "name": "Simulación 2:27:08 a. m.",
+    "radius": 0.6,
+    "windSpeed": 2.36,
+    "pg": 165.7537069192253,
+    "pUseful": 66.30148276769012,
+    "pElectric": 39.78088966061407
+  },
+  {
+    "id": "e4acd75c-c94e-411d-bf95-3d848d3dcbaa",
+    "name": "Simulación 2:27:28 a. m.",
+    "radius": 36,
+    "windSpeed": 23.33,
+    "pg": 41050607.92478549,
+    "pUseful": 16420243.169914195,
+    "pElectric": 3284048.633982839
   }
 ]

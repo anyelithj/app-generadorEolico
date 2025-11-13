@@ -25,14 +25,14 @@ export default function IoTPanel() {
       const data = await resp.json();
       console.log("RAW DATA:", data);
 
-      // Aseguramos que siempre trabajamos con un array
+    
       const items = Array.isArray(data) ? data : [data];
 
       const sensorsList: Sensor[] = items
         .map((obj: any) => {
           console.log("OBJ:", obj);
 
-          // 🔹 Caso 1: multi con distance / temperature / humidity
+        
           if (
             obj.type === "multi" &&
             (obj.distance !== undefined ||
@@ -67,7 +67,6 @@ export default function IoTPanel() {
             ];
           }
 
-          // 🔹 Caso 2: multi con Esp32_2: true (flame / rpm / windSpeed)
           if (obj.type === "multi" && obj.Esp32_2) {
             const arr: Sensor[] = [
               {

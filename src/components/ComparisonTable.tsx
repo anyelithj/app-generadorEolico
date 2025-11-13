@@ -20,15 +20,13 @@ interface ComparisonTableProps {
 export default function ComparisonTable({ onDataChange }: ComparisonTableProps) {
   const [simulations, setSimulations] = useState<Simulation[]>([]);
 
-
   const loadSimulations = () => {
     const stored = localStorage.getItem("simulations");
-    const parsed: Simulation[] = stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
     setSimulations(parsed);
-    onDataChange(parsed.map((s) => ({ x: s.windSpeed, y: s.pElectric })));
+    onDataChange(parsed.map((s: Simulation) => ({ x: s.windSpeed, y: s.pElectric })));
   };
 
- 
   useEffect(() => {
     loadSimulations();
     const updateHandler = () => loadSimulations();
@@ -110,4 +108,5 @@ export default function ComparisonTable({ onDataChange }: ComparisonTableProps) 
     </div>
   );
 }
+
 

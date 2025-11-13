@@ -1,20 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import ComparisonTable from "../../components/ComparisonTable";
 import ChartPower from "../../components/ChartPower";
 
 export default function ResultsPage() {
   const [chartData, setChartData] = useState<{ x: number; y: number }[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("simulations");
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      setChartData(parsed.map((s: any) => ({ x: s.windSpeed, y: s.pElectric })));
-    }
-  }, []);
 
   return (
     <Layout>
@@ -23,7 +15,9 @@ export default function ResultsPage() {
           Visualización de Datos
         </h1>
 
+      
         <div className="flex flex-col gap-6 md:grid md:grid-cols-2">
+          {/* 📈 Gráfica */}
           <div className="w-full overflow-hidden rounded-md bg-white p-3 shadow-sm">
             <p className="mb-4 text-slate-700 text-justify">
               Se comparan los resultados de las simulaciones y se visualiza cómo varía 
